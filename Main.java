@@ -1,4 +1,6 @@
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 public class Main{
     public static void main(String[] args){
       JFrame window= new JFrame();
@@ -14,6 +16,9 @@ public class Main{
       //window.setLoccationRelativeTo(null);
       window.setVisible(true);
       gamePanel.startGameThread();
+
+      
+      
 
       //System.out.println(blue);
       //System.out.println(easy);

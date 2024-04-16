@@ -3,6 +3,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable{
     final int originalTitleSize=16; //16x16
@@ -18,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
+    Player blue= new Player(this,keyH, "blue", 1, 2, 3);
 
     int playerX= 100;
     int playerY= 100;
@@ -48,12 +51,12 @@ public class GamePanel extends JPanel implements Runnable{
             update();
             repaint();
 
-            
             try {
                 double remainingTime=nextDrawTime-System.nanoTime();
                 remainingTime=remainingTime/1000000;
                 if (remainingTime<0){
                     remainingTime=0;
+                    
                 }
 
                 Thread.sleep((long)remainingTime);
@@ -79,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
         if (keyH.leftPressed==true){
             playerX-= playerSpd;
         }
+        
     }
 
     public void paintComponent(Graphics g){
@@ -88,5 +92,6 @@ public class GamePanel extends JPanel implements Runnable{
         g2.setColor(Color.white);
         g2.fillRect(playerX, playerY, tileSize, tileSize);
         g2.dispose();
+        
     }
 }
