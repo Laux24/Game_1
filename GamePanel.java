@@ -18,13 +18,14 @@ public class GamePanel extends JPanel implements Runnable{
 
     int FPS=60;
 
+    TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
     Player blue= new Player(this,keyH, "blue", 1, 2, 3);
 
-    int playerX= 100;
-    int playerY= 100;
-    int playerSpd= 4;
+    // int playerX= 100;
+    // int playerY= 100;
+    // int playerSpd= 4;
 
 
     public GamePanel(){
@@ -88,10 +89,12 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2= (Graphics2D)g;
+        player.draw(g2);
+        tileM.draw(g2);
 
-        g2.setColor(Color.white);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
-        g2.dispose();
+        // g2.setColor(Color.white);
+        // g2.fillRect(playerX, playerY, tileSize, tileSize);
+        // g2.dispose();
         
     }
 }

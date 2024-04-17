@@ -23,6 +23,11 @@ public class Player extends Entity{
         setDefaultVals();
         getPlayerImage();
 
+        //Make sure this isn't the whole sprite, you want to leave a little room
+        solidArea=new Rectangle(0,0, 50, 50);
+        //You can also do this:
+        //solidArea.x / y / height / width = #
+
         name=myName;
         hp=health;
         dp=damage;
@@ -66,8 +71,9 @@ public class Player extends Entity{
     }
 
     public void draw(Graphics2D g2){
-        g2.setColor(Color.white);
+        g2.setColor(Color.blue);
         g2.fillRect(x,y,gp.tileSize, gp.tileSize);
+        g2.dispose();
 
         //BufferedImage image=null;
         // switch(direction){
