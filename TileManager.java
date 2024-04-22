@@ -1,4 +1,7 @@
 import java.io.IOException;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
 
 public class TileManager {
     GamePanel gp;
@@ -11,13 +14,13 @@ public class TileManager {
     }
 
     public void getTileImage(){
-        try{
-            tile[0]=new Tile();
-            tile[0].collision=true;
+        // try{
+        //     tile[0]=new Tile();
+        //     tile[0].collision=true;
             
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        //  } catch(IOException e){
+        // //     e.printStackTrace();
+        // }
     }
 
     public void draw(Graphics2D g2){

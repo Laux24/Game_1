@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -11,6 +12,10 @@ import javax.swing.JLabel;
 public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
+    public int x;
+    public int y;
+    public int speed;
+    public String direction;
     public String name;
     public int hp;
     public int dp;
@@ -22,9 +27,10 @@ public class Player extends Entity{
 
         setDefaultVals();
         getPlayerImage();
+        direction="up";
 
         //Make sure this isn't the whole sprite, you want to leave a little room
-        solidArea=new Rectangle(0,0, 50, 50);
+        //solidArea=new Rectangle(0,0, 50, 50);
         //You can also do this:
         //solidArea.x / y / height / width = #
 
@@ -35,38 +41,45 @@ public class Player extends Entity{
     }
 
     public void setDefaultVals(){
-        int x=100;
-        int y=100;
-        int speed=4;
+        x=100;
+        y=100;
+        speed=4;
+        // String direction="north";
     }
     public void getPlayerImage(){
-        try{
-            // right=MyClass.class.getResource("Spork_Knight.gif");
-            // ImageIcon iI= new ImageIcon(right);
-            // JLabel label=new JLabel(iI);
-            // label.setBounds(x,y,gp.tileSize,gp.tileSize);
-            // window.frame.getContentPane().add(label);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        // try{
+        //     // right=MyClass.class.getResource("Spork_Knight.gif");
+        //     // ImageIcon iI= new ImageIcon(right);
+        //     // JLabel label=new JLabel(iI);
+        //     // label.setBounds(x,y,gp.tileSize,gp.tileSize);
+        //     // window.frame.getContentPane().add(label);
+        // } catch(Exception e){
+        //     e.printStackTrace();
+        // }
     }
 
     public void update(){
-         if (keyH.upPressed==true){
+         //String direction;
+        if (keyH.upPressed==true){
             direction="up";
+            //System.out.println("up");
             y-= speed;
+            // System.out.println("y: "+y);
         }
         if (keyH.downPressed==true){
             direction="down";
             y+= speed;
+            // System.out.println("y: "+y);
         }
         if (keyH.rightPressed==true){
             direction="right";
             x+= speed;
+            // System.out.println("x: "+x);
         }
         if (keyH.leftPressed==true){
             direction="left";
             x-= speed;
+            // System.out.println("x: "+x);
         }
     }
 

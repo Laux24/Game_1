@@ -1,3 +1,7 @@
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
 public class Enemy extends Entity{
     GamePanel gp;
     KeyHandler keyH;
