@@ -16,4 +16,20 @@ public class Entity {
     public Entity(Gamepanel mygp){
         this.gp=mygp;
     }
+
+    public void update(){
+        //setAction();
+
+        collisionOn=false;
+        gp.cChecker.checkEntity(this, gp.red);
+
+        if (collisionOn==false){
+            switch(direction){
+                case "up": y-= speed;
+                case "down": y+= speed;
+                case "right": x+= speed;
+                case "left": x-= speed;
+            }
+    }
+}
 }

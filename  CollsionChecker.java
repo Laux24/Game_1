@@ -33,7 +33,7 @@ public class CollisionChecker {
 
     public int checkEntity(Entity me, Entity them){
         int index=999;
-
+        // if (this.getClass() instanceOf Enemy)
         if (them!=null){
             int myXArea1=me.solidArea.x;
             int myYArea1=me.solidArea.y;

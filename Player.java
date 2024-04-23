@@ -77,18 +77,9 @@ public class Player extends Entity{
             direction="left";
             // System.out.println("x: "+x);
         }
-        collisionOn=false;
-        int monsterIndex= gp.cChecker.checkEntity(this, gp.red);
-
-        if (collisionOn==false){
-            switch(directio){
-                case "up": y-= speed;
-                case "down": y+= speed;
-                case "right": x+= speed;
-                case "left": x-= speed;
-            }
+        
             
-        }
+        
     }
 
     
