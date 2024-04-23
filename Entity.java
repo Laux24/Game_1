@@ -7,8 +7,13 @@ public class Entity {
     public int speed;
 
     //public URL right, left;
-    //public String direction;
+    public String direction;
 
     public Rectangle solidArea;
     public boolean collisionOn=false;
+    public int actionLockCounter=0;
+
+    public Entity(Gamepanel mygp){
+        this.gp=mygp;
+    }
 }

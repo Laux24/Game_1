@@ -22,15 +22,16 @@ public class Player extends Entity{
     public int mp;
 
     public Player(GamePanel mygp, KeyHandler mykeyH, String myName, int health, int damage, int magic){
-        gp=mygp;
         keyH=mykeyH;
 
         setDefaultVals();
-        getPlayerImage();
+        //getPlayerImage();
         direction="up";
 
         //Make sure this isn't the whole sprite, you want to leave a little room
-        //solidArea=new Rectangle(0,0, 50, 50);
+        solidAreaWidth=32;
+        solidAreaHeight=32;
+        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
         //You can also do this:
         //solidArea.x / y / height / width = #
 
@@ -62,26 +63,35 @@ public class Player extends Entity{
          //String direction;
         if (keyH.upPressed==true){
             direction="up";
-            //System.out.println("up");
-            y-= speed;
             // System.out.println("y: "+y);
         }
         if (keyH.downPressed==true){
             direction="down";
-            y+= speed;
             // System.out.println("y: "+y);
         }
         if (keyH.rightPressed==true){
             direction="right";
-            x+= speed;
             // System.out.println("x: "+x);
         }
         if (keyH.leftPressed==true){
             direction="left";
-            x-= speed;
             // System.out.println("x: "+x);
         }
+        collisionOn=false;
+        int monsterIndex= gp.cChecker.checkEntity(this, gp.red);
+
+        if (collisionOn==false){
+            switch(directio){
+                case "up": y-= speed;
+                case "down": y+= speed;
+                case "right": x+= speed;
+                case "left": x-= speed;
+            }
+            
+        }
     }
+
+    
 
     public void draw(Graphics2D g2){
         g2.setColor(Color.blue);

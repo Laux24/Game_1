@@ -1,24 +1,31 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.Random;
 
 public class Enemy extends Entity{
     GamePanel gp;
     KeyHandler keyH;
+    public int x;
+    public int y;
+    public int speed;
+    public String direction;
     public String name;
     public int hp;
     public int dp;
     public int mp;
 
-    public Enemy(GamePanel mygp, KeyHandler mykeyH, String myName, int health, int damage, int magic){
-        gp=mygp;
-        keyH=mykeyH;
+    public Enemy(GamePanel mygp, String myName, int health, int damage, int magic){
+        super(mygp);
 
         setDefaultVals();
-        getEnemyImage();
+        //getEnemyImage();
+        direction= "up";
 
         //Make sure this isn't the whole sprite, you want to leave a little room
-        solidArea=new Rectangle(0,0, 50, 50);
+        solidAreaWidth=32;
+        solidAreaHeight=32;
+        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
         //You can also do this:
         //solidArea.x / y / height / width = #
         
@@ -29,24 +36,24 @@ public class Enemy extends Entity{
     }
 
     public void setDefaultVals(){
-        int x=100;
-        int y=100;
-        int speed=4;
+        x=100;
+        y=100;
+        speed=4;
     }
     public void getEnemyImage(){
-        try{
-            // right=MyClass.class.getResource("Spork_Knight.gif");
-            // ImageIcon iI= new ImageIcon(right);
-            // JLabel label=new JLabel(iI);
-            // label.setBounds(x,y,gp.tileSize,gp.tileSize);
-            // window.frame.getContentPane().add(label);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        // try{
+        //     // right=MyClass.class.getResource("Spork_Knight.gif");
+        //     // ImageIcon iI= new ImageIcon(right);
+        //     // JLabel label=new JLabel(iI);
+        //     // label.setBounds(x,y,gp.tileSize,gp.tileSize);
+        //     // window.frame.getContentPane().add(label);
+        // } catch(Exception e){
+        //     e.printStackTrace();
+        // }
     }
 
     public void draw(Graphics2D g2){
-        g2.setColor(Color.blue);
+        g2.setColor(Color.red);
         g2.fillRect(x,y,gp.tileSize, gp.tileSize);
         g2.dispose();
 
@@ -60,6 +67,27 @@ public class Enemy extends Entity{
         //         break;
         // }
         //g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+    }
+
+    public void setAction(){
+        actionLockCounter++;
+
+        if (actionLockCounter==120){
+            Random rand= new Randome();
+            int i= rand.nextInt(100)+1;
+
+            if (i<=25){
+                direction="up";
+            } else if (i<=50){
+                direction="down";
+            } else if (i<=75){
+                direction="right";
+            } else if (i<=100){
+                direction="left";
+            }
+
+            actionLockCounter=0;
+        }
     }
 
     public String getName(){
