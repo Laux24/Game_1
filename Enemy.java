@@ -15,25 +15,25 @@ public class Enemy extends Entity{
     public int dp;
     public int mp;
 
-    public Enemy(GamePanel mygp, String myName, int health, int damage, int magic){
-        super(mygp);
+    // public Enemy(GamePanel mygp, String myName, int health, int damage, int magic){
+    //     // super(mygp);
 
-        setDefaultVals();
-        //getEnemyImage();
-        direction= "up";
+    //     setDefaultVals();
+    //     //getEnemyImage();
+    //     direction= "up";
 
-        //Make sure this isn't the whole sprite, you want to leave a little room
-        solidAreaWidth=32;
-        solidAreaHeight=32;
-        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
-        //You can also do this:
-        //solidArea.x / y / height / width = #
+    //     //Make sure this isn't the whole sprite, you want to leave a little room
+    //     solidAreaWidth=32;
+    //     solidAreaHeight=32;
+    //     solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
+    //     //You can also do this:
+    //     //solidArea.x / y / height / width = #
         
-        name=myName;
-        hp=health;
-        dp=damage;
-        mp=magic;
-    }
+    //     name=myName;
+    //     hp=health;
+    //     dp=damage;
+    //     mp=magic;
+    // }
 
     public void setDefaultVals(){
         x=100;

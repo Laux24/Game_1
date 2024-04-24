@@ -13,15 +13,15 @@ public class Entity {
     public boolean collisionOn=false;
     public int actionLockCounter=0;
 
-    public Entity(Gamepanel mygp){
-        this.gp=mygp;
-    }
+    // public Entity(Gamepanel mygp){
+    //     this.gp=mygp;
+    // }
 
     public void update(){
         //setAction();
 
         collisionOn=false;
-        gp.cChecker.checkEntity(this, gp.red);
+        // gp.cChecker.checkEntity(this, gp.red);
 
         if (collisionOn==false){
             switch(direction){

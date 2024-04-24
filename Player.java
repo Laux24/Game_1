@@ -29,8 +29,8 @@ public class Player extends Entity{
         direction="up";
 
         //Make sure this isn't the whole sprite, you want to leave a little room
-        solidAreaWidth=32;
-        solidAreaHeight=32;
+        int solidAreaWidth=32;
+        int solidAreaHeight=32;
         solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
         //You can also do this:
         //solidArea.x / y / height / width = #

@@ -21,9 +21,9 @@ public class GamePanel extends JPanel implements Runnable{
     TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
-    public CollisionChecker cChecker= new CollisionChecker(this);
+    // public CollisionChecker cChecker= new CollisionChecker(this);
     public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
-    public Enemy red= new Enemy("red", 1, 2, 3);
+    // public Enemy red= new Enemy("red", 1, 2, 3);
 
     // int playerX= 100;
     // int playerY= 100;
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable{
             // System.out.println("Le time: "+currentTime);
 
             update();
-            repaint();
+            //repaint();
 
             try {
                 double remainingTime=nextDrawTime-System.nanoTime();
@@ -74,18 +74,18 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
         blue.update();
-        red.update();
+        // red.update();
         
-        collsionOn=false;
-        gp.cChecker.checkTile(this);
+        // collsionOn=false;
+        // gp.cChecker.checkTile(this);
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2= (Graphics2D)g;
         blue.draw(g2);
-        red.draw(g2);
-        tileM.draw(g2);
+        // red.draw(g2);
+        //tileM.draw(g2);
 
         // g2.setColor(Color.white);
         // g2.fillRect(playerX, playerY, tileSize, tileSize);
