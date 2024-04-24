@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Player extends Entity{
-    GamePanel gp;
     KeyHandler keyH;
     public int x;
     public int y;
@@ -21,7 +20,8 @@ public class Player extends Entity{
     public int dp;
     public int mp;
 
-    public Player(GamePanel mygp, KeyHandler mykeyH, String myName, int health, int damage, int magic){
+    public Player(GamePanel gp, KeyHandler mykeyH, String myName, int health, int damage, int magic){
+        super(gp);
         keyH=mykeyH;
 
         setDefaultVals();
@@ -64,19 +64,28 @@ public class Player extends Entity{
         if (keyH.upPressed==true){
             direction="up";
             // System.out.println("y: "+y);
+            y-= speed; 
         }
         if (keyH.downPressed==true){
             direction="down";
             // System.out.println("y: "+y);
+            y+= speed;
         }
         if (keyH.rightPressed==true){
             direction="right";
             // System.out.println("x: "+x);
+            x+= speed;
         }
         if (keyH.leftPressed==true){
             direction="left";
             // System.out.println("x: "+x);
+            x-= speed;
         }
+
+        collisionOn=false;
+        // gp.cChecker.checkEntity(this, gp.red);
+
+        
         
             
         
@@ -86,8 +95,8 @@ public class Player extends Entity{
 
     public void draw(Graphics2D g2){
         g2.setColor(Color.blue);
-        g2.fillRect(x,y,gp.tileSize, gp.tileSize);
-        g2.dispose();
+        g2.fillRect(x,y,gp.tileSize,gp.tileSize);
+        //g2.dispose();
 
         //BufferedImage image=null;
         // switch(direction){

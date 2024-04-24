@@ -9,27 +9,28 @@ public class Entity {
     //public URL right, left;
     public String direction;
 
+    GamePanel gp;
     public Rectangle solidArea;
     public boolean collisionOn=false;
     public int actionLockCounter=0;
 
-    // public Entity(Gamepanel mygp){
-    //     this.gp=mygp;
-    // }
+    public Entity(GamePanel mygp){
+        this.gp=mygp;
+    }
 
     public void update(){
-        //setAction();
+        // setAction();
+        // System.out.println("Xoro");
+        // collisionOn=false;
+        // // // gp.cChecker.checkEntity(this, gp.red);
 
-        collisionOn=false;
-        // gp.cChecker.checkEntity(this, gp.red);
-
-        if (collisionOn==false){
-            switch(direction){
-                case "up": y-= speed;
-                case "down": y+= speed;
-                case "right": x+= speed;
-                case "left": x-= speed;
-            }
+        // if (collisionOn==false){
+        //     switch(direction){
+        //         case "up": y-= speed; 
+        //         case "down": y+= speed;
+        //         case "right": x+= speed;
+        //         case "left": x-= speed;
+        //     }
+        // }
     }
-}
 }

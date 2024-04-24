@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 public class Enemy extends Entity{
-    GamePanel gp;
     KeyHandler keyH;
     public int x;
     public int y;
@@ -15,30 +14,30 @@ public class Enemy extends Entity{
     public int dp;
     public int mp;
 
-    // public Enemy(GamePanel mygp, String myName, int health, int damage, int magic){
-    //     // super(mygp);
+    public Enemy(GamePanel mygp, String myName, int health, int damage, int magic){
+        super(mygp);
 
-    //     setDefaultVals();
-    //     //getEnemyImage();
-    //     direction= "up";
+        setDefaultVals();
+        //getEnemyImage();
+        direction= "up";
 
-    //     //Make sure this isn't the whole sprite, you want to leave a little room
-    //     solidAreaWidth=32;
-    //     solidAreaHeight=32;
-    //     solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
-    //     //You can also do this:
-    //     //solidArea.x / y / height / width = #
+        //Make sure this isn't the whole sprite, you want to leave a little room
+        int solidAreaWidth=32;
+        int solidAreaHeight=32;
+        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
+        //You can also do this:
+        //solidArea.x / y / height / width = #
         
-    //     name=myName;
-    //     hp=health;
-    //     dp=damage;
-    //     mp=magic;
-    // }
+        name=myName;
+        hp=health;
+        dp=damage;
+        mp=magic;
+    }
 
     public void setDefaultVals(){
-        x=100;
+        x=200;
         y=100;
-        speed=4;
+        speed=1;
     }
     public void getEnemyImage(){
         // try{
@@ -55,7 +54,7 @@ public class Enemy extends Entity{
     public void draw(Graphics2D g2){
         g2.setColor(Color.red);
         g2.fillRect(x,y,gp.tileSize, gp.tileSize);
-        g2.dispose();
+        //g2.dispose();
 
         //BufferedImage image=null;
         // switch(direction){
@@ -72,23 +71,39 @@ public class Enemy extends Entity{
     public void setAction(){
         actionLockCounter++;
 
-        if (actionLockCounter==120){
-            Random rand= new Randome();
+        if (actionLockCounter==60){
+            Random rand= new Random();
             int i= rand.nextInt(100)+1;
 
             if (i<=25){
-                direction="up";
+                direction="up"; 
             } else if (i<=50){
                 direction="down";
+                y+= speed; 
             } else if (i<=75){
                 direction="right";
+                x+= speed; 
             } else if (i<=100){
                 direction="left";
+                x-= speed; 
             }
 
             actionLockCounter=0;
         }
-    }
+        if (direction.equals("up")){
+            y-= speed;
+        } 
+        if (direction.equals("down")){
+            y+= speed;
+        } 
+        if (direction.equals("left")){
+            x-= speed;
+        } 
+        if (direction.equals("right")){
+            x+= speed;
+        } 
+
+        }
 
     public String getName(){
         return name;

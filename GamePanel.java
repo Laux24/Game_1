@@ -17,19 +17,6 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenHeight= maxScreenRow*tileSize; //576 pixels
 
     int FPS=60;
-
-    TileManager tileM= new TileManager(this);
-    KeyHandler keyH= new KeyHandler();
-    Thread gameThread;
-    // public CollisionChecker cChecker= new CollisionChecker(this);
-    public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
-    // public Enemy red= new Enemy("red", 1, 2, 3);
-
-    // int playerX= 100;
-    // int playerY= 100;
-    // int playerSpd= 4;
-
-
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
@@ -37,6 +24,20 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
+
+    TileManager tileM= new TileManager(this);
+    KeyHandler keyH= new KeyHandler();
+    Thread gameThread;
+    // public CollisionChecker cChecker= new CollisionChecker(this);
+    public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
+    public Enemy red= new Enemy(this, "red", 1, 2, 3);
+
+    // int playerX= 100;
+    // int playerY= 100;
+    // int playerSpd= 4;
+
+
+    
 
     public void startGameThread(){
         gameThread= new Thread(this);
@@ -52,7 +53,8 @@ public class GamePanel extends JPanel implements Runnable{
             // System.out.println("Le time: "+currentTime);
 
             update();
-            //repaint();
+            repaint();
+            repaint();
 
             try {
                 double remainingTime=nextDrawTime-System.nanoTime();
@@ -74,7 +76,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
         blue.update();
-        // red.update();
+        red.setAction();
+
         
         // collsionOn=false;
         // gp.cChecker.checkTile(this);
@@ -83,12 +86,12 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2= (Graphics2D)g;
+        red.draw(g2);
         blue.draw(g2);
-        // red.draw(g2);
         //tileM.draw(g2);
 
         // g2.setColor(Color.white);
-        // g2.fillRect(playerX, playerY, tileSize, tileSize);
+        // g2.fillRect(32, 32, tileSize, tileSize);
         // g2.dispose();
         
     }
