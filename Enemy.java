@@ -90,18 +90,18 @@ public class Enemy extends Entity{
 
             actionLockCounter=0;
         }
-        if (direction.equals("up")){
-            y-= speed;
-        } 
-        if (direction.equals("down")){
-            y+= speed;
-        } 
-        if (direction.equals("left")){
-            x-= speed;
-        } 
-        if (direction.equals("right")){
-            x+= speed;
-        } 
+        // if (direction.equals("up")){
+        //     y-= speed;
+        // } 
+        // if (direction.equals("down")){
+        //     y+= speed;
+        // } 
+        // if (direction.equals("left")){
+        //     x-= speed;
+        // } 
+        // if (direction.equals("right")){
+        //     x+= speed;
+        // } 
 
         }
 

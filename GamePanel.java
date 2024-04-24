@@ -77,6 +77,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update(){
         blue.update();
         red.setAction();
+        blue.checkEntity(blue, red);
 
         
         // collsionOn=false;

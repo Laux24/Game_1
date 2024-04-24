@@ -11,6 +11,8 @@ public class Entity {
 
     GamePanel gp;
     public Rectangle solidArea;
+    public int solidAreaWidth;
+    public int solidAreaHeight;
     public boolean collisionOn=false;
     public int actionLockCounter=0;
 
@@ -21,8 +23,7 @@ public class Entity {
     public void update(){
         // setAction();
         // System.out.println("Xoro");
-        // collisionOn=false;
-        // // // gp.cChecker.checkEntity(this, gp.red);
+        collisionOn=false;
 
         // if (collisionOn==false){
         //     switch(direction){
@@ -33,4 +34,6 @@ public class Entity {
         //     }
         // }
     }
+
+    
 }

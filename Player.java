@@ -83,12 +83,40 @@ public class Player extends Entity{
         }
 
         collisionOn=false;
-        // gp.cChecker.checkEntity(this, gp.red);
 
         
         
-            
+    }
+
+    public void checkEntity(Entity me, Entity them){
         
+        // int index=999;
+        // if (this.getClass() instanceOf Enemy)
+        if (them!=null){
+            int myXArea1=me.solidArea.x;
+            int myYArea1=me.solidArea.y;
+            int myXArea2=me.solidArea.x+me.solidAreaWidth;
+            int myYArea2=me.solidArea.y+me.solidAreaHeight;
+
+            int theirXArea1=them.solidArea.x;
+            int theirYArea1=them.solidArea.y;
+            int theirXArea2=them.solidArea.x+them.solidAreaWidth;
+            int theirYArea2=them.solidArea.y+them.solidAreaHeight;
+
+            //System.out.println("Their x: "+theirXArea1+" My x: "+myXArea1);
+            //They're Right                 Up                    Left            Down          
+            if (theirXArea1>myXArea1&&theirYArea1<myYArea1&&theirXArea2<myXArea2&&theirYArea2>myYArea2){
+                //Start Battle
+                System.out.println("Yep1");
+            } else if (theirXArea2>myXArea1&&theirYArea2<myYArea1&&theirXArea2<myXArea2&&theirYArea2<myYArea2){
+                //Start Battle
+                System.out.println("Yep2");
+            }
+
+            if (myXArea1>200&&myXArea1<232&&myYArea1>100&&myYArea1>132||myXArea2>200&&myXArea2<232&&myYArea2>100&&myYArea2>132){
+                System.out.println("test");
+            }
+        }
     }
 
     
@@ -97,6 +125,9 @@ public class Player extends Entity{
         g2.setColor(Color.blue);
         g2.fillRect(x,y,gp.tileSize,gp.tileSize);
         //g2.dispose();
+        int solidAreaWidth=32;
+        int solidAreaHeight=32;
+        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
 
         //BufferedImage image=null;
         // switch(direction){
