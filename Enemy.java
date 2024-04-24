@@ -54,6 +54,7 @@ public class Enemy extends Entity{
     public void draw(Graphics2D g2){
         g2.setColor(Color.red);
         g2.fillRect(x,y,gp.tileSize, gp.tileSize);
+        solidArea=new Rectangle(x,y, size, size);
         //g2.dispose();
 
         //BufferedImage image=null;
@@ -90,18 +91,18 @@ public class Enemy extends Entity{
 
             actionLockCounter=0;
         }
-        // if (direction.equals("up")){
-        //     y-= speed;
-        // } 
-        // if (direction.equals("down")){
-        //     y+= speed;
-        // } 
-        // if (direction.equals("left")){
-        //     x-= speed;
-        // } 
-        // if (direction.equals("right")){
-        //     x+= speed;
-        // } 
+        if (direction.equals("up")){
+            y-= speed;
+        } 
+        if (direction.equals("down")){
+            y+= speed;
+        } 
+        if (direction.equals("left")){
+            x-= speed;
+        } 
+        if (direction.equals("right")){
+            x+= speed;
+        } 
 
         }
 

@@ -19,6 +19,7 @@ public class Player extends Entity{
     public int hp;
     public int dp;
     public int mp;
+    public int size;
 
     public Player(GamePanel gp, KeyHandler mykeyH, String myName, int health, int damage, int magic){
         super(gp);
@@ -29,9 +30,8 @@ public class Player extends Entity{
         direction="up";
 
         //Make sure this isn't the whole sprite, you want to leave a little room
-        int solidAreaWidth=32;
-        int solidAreaHeight=32;
-        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
+        size= 40;
+        solidArea=new Rectangle(x,y, size, size);
         //You can also do this:
         //solidArea.x / y / height / width = #
 
@@ -93,27 +93,36 @@ public class Player extends Entity{
         // int index=999;
         // if (this.getClass() instanceOf Enemy)
         if (them!=null){
+            
+
             int myXArea1=me.solidArea.x;
             int myYArea1=me.solidArea.y;
-            int myXArea2=me.solidArea.x+me.solidAreaWidth;
-            int myYArea2=me.solidArea.y+me.solidAreaHeight;
+            int myXArea2=me.solidArea.x+size;
+            int myYArea2=me.solidArea.y+size;
 
             int theirXArea1=them.solidArea.x;
             int theirYArea1=them.solidArea.y;
-            int theirXArea2=them.solidArea.x+them.solidAreaWidth;
-            int theirYArea2=them.solidArea.y+them.solidAreaHeight;
+            int theirXArea2=them.solidArea.x+size;
+            int theirYArea2=them.solidArea.y+size;
 
+            //System.out.println(solidAreaHeight);
             //System.out.println("Their x: "+theirXArea1+" My x: "+myXArea1);
-            //They're Right                 Up                    Left            Down          
-            if (theirXArea1>myXArea1&&theirYArea1<myYArea1&&theirXArea2<myXArea2&&theirYArea2>myYArea2){
-                //Start Battle
-                System.out.println("Yep1");
-            } else if (theirXArea2>myXArea1&&theirYArea2<myYArea1&&theirXArea2<myXArea2&&theirYArea2<myYArea2){
-                //Start Battle
-                System.out.println("Yep2");
-            }
+            //System.out.println("My x1: "+myXArea1+" My y1: "+myYArea1+"\nMy x2: "+myXArea2+" My y2: "+myYArea2+"\n");
+            //System.out.println("Their x1: "+theirXArea1+" Their y1: "+theirYArea1+"\nTheir x2: "+theirXArea2+" Their y2: "+theirYArea2);
 
-            if (myXArea1>200&&myXArea1<232&&myYArea1>100&&myYArea1>132||myXArea2>200&&myXArea2<232&&myYArea2>100&&myYArea2>132){
+            //They're Right                 Up                    Left            Down          
+            // if (theirXArea1>myXArea1&&theirYArea1<myYArea1&&theirXArea2<myXArea2&&theirYArea2>myYArea2){
+            //     //Start Battle
+            //     System.out.println("Yep1");
+            // } else if (theirXArea2>myXArea1&&theirYArea2<myYArea1&&theirXArea2<myXArea2&&theirYArea2<myYArea2){
+            //     //Start Battle
+            //     System.out.println("Yep2");
+            // }
+
+            if (myXArea1>theirXArea1&&myXArea1<theirXArea2
+            &&myYArea1>theirYArea1&&myYArea1<theirYArea2||
+            myXArea2>theirXArea1&&myXArea2<theirXArea2
+            &&myYArea2>theirYArea1&&myYArea2<theirYArea2){
                 System.out.println("test");
             }
         }
@@ -127,7 +136,7 @@ public class Player extends Entity{
         //g2.dispose();
         int solidAreaWidth=32;
         int solidAreaHeight=32;
-        solidArea=new Rectangle(x,y, solidAreaWidth, solidAreaHeight);
+        solidArea=new Rectangle(x,y, size, size);
 
         //BufferedImage image=null;
         // switch(direction){
