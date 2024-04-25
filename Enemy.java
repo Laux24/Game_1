@@ -13,6 +13,7 @@ public class Enemy extends Entity{
     public int hp;
     public int dp;
     public int mp;
+    public int size;
 
     public Enemy(GamePanel mygp, String myName, int health, int damage, int magic){
         super(mygp);
@@ -20,6 +21,7 @@ public class Enemy extends Entity{
         setDefaultVals();
         //getEnemyImage();
         direction= "up";
+        size= 32;
 
         //Make sure this isn't the whole sprite, you want to leave a little room
         int solidAreaWidth=32;
