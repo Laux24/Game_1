@@ -122,6 +122,10 @@ public class Player extends Entity{
             if (myXArea1>theirXArea1&&myXArea1<theirXArea2
             &&myYArea1>theirYArea1&&myYArea1<theirYArea2||
             myXArea2>theirXArea1&&myXArea2<theirXArea2
+            &&myYArea2>theirYArea1&&myYArea2<theirYArea2||
+            myXArea2>theirXArea1&&myXArea2<theirXArea2
+            &&myYArea1>theirYArea1&&myYArea1<theirYArea2||
+            myXArea1>theirXArea1&&myXArea1<theirXArea2
             &&myYArea2>theirYArea1&&myYArea2<theirYArea2){
                 System.out.println("test");
             }
@@ -134,8 +138,8 @@ public class Player extends Entity{
         g2.setColor(Color.blue);
         g2.fillRect(x,y,gp.tileSize,gp.tileSize);
         //g2.dispose();
-        int solidAreaWidth=32;
-        int solidAreaHeight=32;
+        // int solidAreaWidth=32;
+        // int solidAreaHeight=32;
         solidArea=new Rectangle(x,y, size, size);
 
         //BufferedImage image=null;
