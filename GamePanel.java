@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable{
     final int originalTitleSize=16; //16x16
@@ -23,18 +24,17 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+
     }
 
-    TileManager tileM= new TileManager(this);
+    //TileManager tileM= new TileManager(this);
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
+    ActionBar actionBar=new ActionBar(this);
     // public CollisionChecker cChecker= new CollisionChecker(this);
     public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
     public Enemy red= new Enemy(this, "red", 1, 2, 3);
 
-    // int playerX= 100;
-    // int playerY= 100;
-    // int playerSpd= 4;
 
 
     
@@ -49,11 +49,8 @@ public class GamePanel extends JPanel implements Runnable{
         double nextDrawTime=System.nanoTime()+drawInterval;
 
         while (gameThread!=null){
-            // long currentTime=System.nanoTime();
-            // System.out.println("Le time: "+currentTime);
 
             update();
-            repaint();
             repaint();
 
             try {
@@ -91,9 +88,6 @@ public class GamePanel extends JPanel implements Runnable{
         blue.draw(g2);
         //tileM.draw(g2);
 
-        // g2.setColor(Color.white);
-        // g2.fillRect(32, 32, tileSize, tileSize);
-        // g2.dispose();
         
     }
 }
