@@ -14,9 +14,11 @@ public class KeyHandler implements KeyListener{
 
     if (code==KeyEvent.VK_W){
         upPressed=true;
+        //System.out.println(upPressed);
     }
     if (code==KeyEvent.VK_S){
         downPressed=true;
+        //System.out.println("D");
     }
     if (code==KeyEvent.VK_A){
         leftPressed=true;

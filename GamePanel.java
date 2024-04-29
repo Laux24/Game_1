@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Dimension;
@@ -16,14 +17,17 @@ public class GamePanel extends JPanel implements Runnable{
     final int maxScreenRow= 12;
     final int screenWidth= maxScreenCol*tileSize; //768 pixels
     final int screenHeight= maxScreenRow*tileSize; //576 pixels
+    Container glpa;
 
     int FPS=60;
-    public GamePanel(){
+    public GamePanel(Container glpan){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+        glpa= glpan;
+        //glpa.setVisible(true);
 
     }
 
@@ -34,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
     // public CollisionChecker cChecker= new CollisionChecker(this);
     public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
     public Enemy red= new Enemy(this, "red", 1, 2, 3);
+    
 
 
 
@@ -72,9 +77,16 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update(){
-        blue.update();
-        red.setAction();
-        blue.checkEntity(blue, red);
+        if (!(blue.checkEntity(blue, red))){
+            blue.update();
+            red.setAction();
+        }
+        
+        if (blue.checkEntity(blue, red)){
+            Battle battle= new Battle(glpa, blue, red, keyH);
+            battle.sequence();
+        }
+        
 
         
         // collsionOn=false;

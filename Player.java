@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -88,7 +89,7 @@ public class Player extends Entity{
         
     }
 
-    public void checkEntity(Entity me, Entity them){
+    public boolean checkEntity(Entity me, Entity them){
         
         // int index=999;
         // if (this.getClass() instanceOf Enemy)
@@ -127,9 +128,14 @@ public class Player extends Entity{
             &&myYArea1>theirYArea1&&myYArea1<theirYArea2||
             myXArea1>theirXArea1&&myXArea1<theirXArea2
             &&myYArea2>theirYArea1&&myYArea2<theirYArea2){
-                System.out.println("test");
+                return (true);
+                //System.out.println("test");
+            } else{
+                return (false);
             }
+            
         }
+        return (false);
     }
 
     

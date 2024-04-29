@@ -106,7 +106,11 @@ public class Enemy extends Entity{
             x+= speed;
         } 
 
-        }
+    }
+    
+    public void bye(){
+        //Dieicide
+    }
 
     public String getName(){
         return name;

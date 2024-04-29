@@ -26,7 +26,7 @@ public class Main{
       window.setGlassPane (new JComponent() {
         @Override
         protected void paintComponent(Graphics g){
-          g.setColor(Color.black);
+          g.setColor(Color.gray);
           g.fillRect(0,370,768,200);
         }
       });
@@ -36,7 +36,7 @@ public class Main{
 
       
 
-      GamePanel gamePanel=new GamePanel();
+      GamePanel gamePanel=new GamePanel(glassPane);
       ActionBar actionBar=new ActionBar(gamePanel);
       window.add(gamePanel);
       window.getContentPane().add(actionBar);
