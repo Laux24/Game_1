@@ -35,9 +35,6 @@ public class Entity {
         // }
     }
 
-    public void bye(){
-        
-    }
 
     
 }

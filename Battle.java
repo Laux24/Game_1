@@ -4,12 +4,12 @@ import java.util.ArrayList;
 public class Battle {
     public int uix=0 ;
     public int uiy=0 ;
-    Entity player;
-    Entity enemy;
+    Player player;
+    Enemy enemy;
     KeyHandler keyH;
     Thread gameThread;
     
-    public Battle(Entity play, Entity enem, KeyHandler keyHa) {
+    public Battle(Player play, Enemy enem, KeyHandler keyHa) {
         player= play;
         enemy= enem;
         keyH=keyHa;
@@ -80,7 +80,11 @@ public class Battle {
         }
         if (keyH.enterPressed==true){
             System.out.println( actions.get(uix));
-
+            System.out.println(enemy.hp+" "+player.hp);
+            if (uix==0){
+                enemy.setHP(enemy.hp-player.dp);
+                System.out.println(enemy.getHP());
+            }
 
             
             try {

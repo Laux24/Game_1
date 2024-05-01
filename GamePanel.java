@@ -37,8 +37,8 @@ public class GamePanel extends JPanel implements Runnable{
     ActionBar actionBar=new ActionBar(this);
     public boolean trfa=false;
     // public CollisionChecker cChecker= new CollisionChecker(this);
-    public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
-    public Enemy red= new Enemy(this, "red", 1, 2, 3);
+    public Player blue= new Player(this,keyH, "blue", 100, 10, 20);
+    public Enemy red= new Enemy(this, "red", 100, 10, 20);
     public Battle battle= new Battle( blue, red, keyH);
     
     
