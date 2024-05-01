@@ -110,6 +110,7 @@ public class Enemy extends Entity{
     
     public void bye(){
         //Dieicide
+        x=1000;
     }
 
     public String getName(){

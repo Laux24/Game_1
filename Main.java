@@ -37,9 +37,9 @@ public class Main{
       
 
       GamePanel gamePanel=new GamePanel(glassPane);
-      ActionBar actionBar=new ActionBar(gamePanel);
+      // ActionBar actionBar=new ActionBar(gamePanel);
       window.add(gamePanel);
-      window.getContentPane().add(actionBar);
+      // window.getContentPane().add(actionBar);
       //window.add(actionBar);
     
 

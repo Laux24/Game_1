@@ -35,9 +35,12 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;
     ActionBar actionBar=new ActionBar(this);
+    public boolean trfa=false;
     // public CollisionChecker cChecker= new CollisionChecker(this);
     public Player blue= new Player(this,keyH, "blue", 1, 2, 3);
     public Enemy red= new Enemy(this, "red", 1, 2, 3);
+    public Battle battle= new Battle( blue, red, keyH);
+    
     
 
 
@@ -68,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable{
 
                 Thread.sleep((long)remainingTime);
                 nextDrawTime+=drawInterval;
+                //System.out.println("run");
             } catch(InterruptedException e){
                 e.printStackTrace();
             }
@@ -83,8 +87,16 @@ public class GamePanel extends JPanel implements Runnable{
         }
         
         if (blue.checkEntity(blue, red)){
-            Battle battle= new Battle(glpa, blue, red, keyH);
-            battle.sequence();
+            // if (!trfa){
+                
+            //     battle.sequence(glpa);
+            //     trfa=true;
+            // }
+            battle.sequence(glpa, gameThread);
+            
+
+            
+            //System.out.println(red.x);
         }
         
 
