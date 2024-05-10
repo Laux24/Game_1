@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
@@ -18,15 +19,17 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth= maxScreenCol*tileSize; //768 pixels
     final int screenHeight= maxScreenRow*tileSize; //576 pixels
     Container glpa;
+    ArrayList<JLabel> jls;
 
     int FPS=60;
-    public GamePanel(Container glpan){
+    public GamePanel(Container glpan, ArrayList<JLabel> jlas){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
         glpa= glpan;
+        jls= jlas;
         //glpa.setVisible(true);
 
     }
@@ -92,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
             //     battle.sequence(glpa);
             //     trfa=true;
             // }
-            battle.sequence(glpa, gameThread);
+            battle.sequence(glpa, jls, gameThread);
             
 
             

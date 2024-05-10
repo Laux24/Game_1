@@ -89,6 +89,11 @@ public class Player extends Entity{
         
     }
 
+    public void bye(){
+        //Dieicide
+        x=1000;
+    }
+
     public boolean checkEntity(Entity me, Entity them){
         
         // int index=999;
