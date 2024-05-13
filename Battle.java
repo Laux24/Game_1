@@ -124,6 +124,7 @@ public class Battle {
                     System.out.println("Enemy HP: "+enemy.hp+" Player HP: "+player.hp);
                     System.out.println();
                     myturn=false;
+                    glpa.setVisible(false);
                     try {
                         Thread.sleep((long)500);
                         //System.out.println("done");
